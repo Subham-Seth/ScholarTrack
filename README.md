@@ -85,7 +85,16 @@ Or run each service independently:
 cd backend
 .\mvnw.cmd spring-boot:run
 ```
-*Note: The backend starts in `dev` profile by default using embedded H2 in MySQL mode and automatically seeds all demo users, scholarships, applications, and risk reports.*
+*Note: The backend starts in `dev` profile by default using embedded H2. Before starting the backend, set these environment variables in the same PowerShell session. Use unique values locally; never commit them:*
+
+```powershell
+$bytes = [byte[]](1..32 | ForEach-Object { Get-Random -Maximum 256 })
+$env:SCHOLARTRACK_JWT_SECRET = [Convert]::ToBase64String($bytes)
+$env:SCHOLARTRACK_DEMO_ADMIN_PASSWORD = Read-Host "Set demo admin password"
+$env:SCHOLARTRACK_DEMO_STUDENT_PASSWORD = Read-Host "Set demo student password"
+```
+
+*The backend seeds demo users using the two password variables above. If using the `mysql` profile, also set `DATABASE_URL`, `DATABASE_USERNAME`, and `DATABASE_PASSWORD`. Do not put actual values in source files or commit them.*
 *H2 Web Console available at: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:scholartrackdb`, User: `sa`, Password: blank)*
 
 #### B. Python AI Microservice (Port 8000)
@@ -110,9 +119,9 @@ npm run dev
 
 | Role | Email Address | Password | Scenario / Characteristics |
 |:---|:---|:---|:---|
-| **Administrator** | `admin@scholartrack.edu` | `Admin@123` | Full access to review queue, fraud flags, duplicate matches, scheme creation, and audit logs. |
-| **Student (Standard)** | `rahul.kumar@scholartrack.edu` | `Student@123` | 84.5% marks, ₹2,40,000 family income. Has active application under review. |
-| **Student (Approved)** | `priya.sharma@scholartrack.edu` | `Student@123` | 92.0% marks, ₹1,80,000 income. Disbursed award with clean verification dossier. |
+| **Administrator** | `admin@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_ADMIN_PASSWORD` | Full access to review queue, fraud flags, duplicate matches, scheme creation, and audit logs. |
+| **Student (Standard)** | `rahul.kumar@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | 84.5% marks, ₹2,40,000 family income. Has active application under review. |
+| **Student (Approved)** | `priya.sharma@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | 92.0% marks, ₹1,80,000 income. Disbursed award with clean verification dossier. |
 | **Student (Mismatch Test)** | `vikram.singh@scholartrack.edu` | `Student@123` | Declared ₹1,80,000 income; OCR extracted certificate shows ₹4,50,000 (+150% variance, Risk Score 78). |
 | **Student (Duplicate Test)** | `rahul.k@scholartrack.edu` | `Student@123` | 92% RapidFuzz identity similarity match with Rahul Kumar. |
 
