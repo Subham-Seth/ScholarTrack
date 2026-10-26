@@ -13,7 +13,7 @@ Authenticates user credentials and returns JWT bearer token and role.
 // Request
 {
   "email": "admin@scholartrack.edu",
-  "password": "Admin@123"
+  "password": "<REDACTED_DEMO_PASSWORD>"
 }
 
 // Response
@@ -37,7 +37,7 @@ Registers a new student account and initializes baseline profile.
 // Request
 {
   "email": "new.student@scholartrack.edu",
-  "password": "Student@123",
+  "password": "<REDACTED_DEMO_PASSWORD>",
   "fullName": "New Student",
   "role": "STUDENT"
 }
