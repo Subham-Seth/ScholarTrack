@@ -70,7 +70,7 @@ export const LoginPage: React.FC = () => {
                 setActiveTab('STUDENT');
                 if (email === 'admin@scholartrack.edu') {
                   setEmail('rahul.kumar@scholartrack.edu');
-                  setPassword('Student@123');
+                  setPassword('');
                 }
               }}
               className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
@@ -87,7 +87,7 @@ export const LoginPage: React.FC = () => {
               onClick={() => {
                 setActiveTab('ADMIN');
                 setEmail('admin@scholartrack.edu');
-                setPassword('Admin@123');
+                setPassword('');
               }}
               className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === 'ADMIN'
@@ -165,7 +165,7 @@ export const LoginPage: React.FC = () => {
             <div className="grid grid-cols-2 gap-2 text-xs">
               <button
                 type="button"
-                onClick={() => fillCredentials('admin@scholartrack.edu', 'Admin@123', 'ADMIN')}
+                onClick={() => fillCredentials('admin@scholartrack.edu', '', 'ADMIN')}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#0F3040] font-bold text-left transition-all"
               >
                 <div className="text-[10px] text-[#A56F63]">Administrator</div>
@@ -174,7 +174,7 @@ export const LoginPage: React.FC = () => {
 
               <button
                 type="button"
-                onClick={() => fillCredentials('rahul.kumar@scholartrack.edu', 'Student@123', 'STUDENT')}
+                onClick={() => fillCredentials('rahul.kumar@scholartrack.edu', '', 'STUDENT')}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#0F3040] font-bold text-left transition-all"
               >
                 <div className="text-[10px] text-emerald-700">Eligible Student</div>
@@ -183,7 +183,7 @@ export const LoginPage: React.FC = () => {
 
               <button
                 type="button"
-                onClick={() => fillCredentials('priya.sharma@scholartrack.edu', 'Student@123', 'STUDENT')}
+                onClick={() => fillCredentials('priya.sharma@scholartrack.edu', '', 'STUDENT')}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#0F3040] font-bold text-left transition-all"
               >
                 <div className="text-[10px] text-sky-700">Approved Student</div>
@@ -192,7 +192,7 @@ export const LoginPage: React.FC = () => {
 
               <button
                 type="button"
-                onClick={() => fillCredentials('vikram.singh@scholartrack.edu', 'Student@123', 'STUDENT')}
+                onClick={() => fillCredentials('vikram.singh@scholartrack.edu', '', 'STUDENT')}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#0F3040] font-bold text-left transition-all"
               >
                 <div className="text-[10px] text-rose-700">Mismatch Case</div>
