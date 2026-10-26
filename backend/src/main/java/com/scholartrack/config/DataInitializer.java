@@ -63,6 +63,14 @@ public class DataInitializer implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
     }
 
+    private String requireEnv(String name) {
+        String value = System.getenv(name);
+        if (value == null || value.isBlank()) {
+            throw new IllegalStateException("Required environment variable is not set: " + name);
+        }
+        return value;
+    }
+
     @Override
     @Transactional
     public void run(String... args) {
@@ -70,8 +78,8 @@ public class DataInitializer implements CommandLineRunner {
             return; // Data already present
         }
 
-        String studentPass = passwordEncoder.encode("Student@123");
-        String adminPass = passwordEncoder.encode("Admin@123");
+        String studentPass = passwordEncoder.encode(requireEnv("SCHOLARTRACK_DEMO_STUDENT_PASSWORD"));
+        String adminPass = passwordEncoder.encode(requireEnv("SCHOLARTRACK_DEMO_ADMIN_PASSWORD"));
 
         // 1. Seed Admin
         User adminUser = userRepository.save(new User("admin@scholartrack.edu", adminPass, "ADMIN"));
