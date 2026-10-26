@@ -122,8 +122,8 @@ npm run dev
 | **Administrator** | `admin@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_ADMIN_PASSWORD` | Full access to review queue, fraud flags, duplicate matches, scheme creation, and audit logs. |
 | **Student (Standard)** | `rahul.kumar@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | 84.5% marks, ₹2,40,000 family income. Has active application under review. |
 | **Student (Approved)** | `priya.sharma@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | 92.0% marks, ₹1,80,000 income. Disbursed award with clean verification dossier. |
-| **Student (Mismatch Test)** | `vikram.singh@scholartrack.edu` | `Student@123` | Declared ₹1,80,000 income; OCR extracted certificate shows ₹4,50,000 (+150% variance, Risk Score 78). |
-| **Student (Duplicate Test)** | `rahul.k@scholartrack.edu` | `Student@123` | 92% RapidFuzz identity similarity match with Rahul Kumar. |
+| **Student (Mismatch Test)** | `vikram.singh@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | Declared ₹1,80,000 income; OCR extracted certificate shows ₹4,50,000 (+150% variance, Risk Score 78). |
+| **Student (Duplicate Test)** | `rahul.k@scholartrack.edu` | Set locally via `SCHOLARTRACK_DEMO_STUDENT_PASSWORD` | 92% RapidFuzz identity similarity match with Rahul Kumar. |
 
 *Quick-Fill demo buttons are provided on the Login page for 1-click credential population.*
 
